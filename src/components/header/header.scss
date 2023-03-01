@@ -1,0 +1,93 @@
+@import "../../mixins.scss";
+
+.header {
+    position: fixed;
+    width: 100%;
+    height: 60px;
+    z-index: 1;
+    display: flex;
+
+    .contentWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            img {
+                height: 50px;
+                background: transparent;
+    
+            }
+        }
+    
+        .menuItems {
+            list-style-type: none;
+            display: none;
+            align-items: center;
+            @include md {
+                display: flex;
+            }
+    
+            .menuItem {
+                color: white;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                margin: 0 15px;
+            }
+        }
+
+        .mobileMenuItems {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            @include md {
+                display: none;
+            }
+            svg {
+                font-size: 18px;
+                color: white;
+            }
+        }
+    }
+
+    &.mobileView {
+        background: var(--black3);
+        .menuItems {
+            display: flex;
+            flex-direction: column;
+            background: var(--black3);
+            position: absolute;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            animation: mobileMenu 0.3s ease forwards;
+            .menuItem {
+                display: flex;
+                flex-direction: column;
+                //align-items: flex-start;
+                height: auto;
+                margin: 0;
+                padding: 15px 20px;
+                width: 100%;
+                font-size: 20px;
+                &:last-child {
+                    display: none;
+                }
+            }
+        }
+    }
+   
+}
+
+
+@keyframes mobileMenu {
+    0% {
+        transform: translateY(-130%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
