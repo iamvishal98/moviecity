@@ -1,31 +1,34 @@
 import axios from 'axios';
 import  { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { getApiConfigurations } from '../store/slicer/HomeSlice';
 import { BASE_URL,headers } from './api';
 
 const useFetch = (url,params) => {
-    const [error,setError]=useState('');
-    const dispatch = useDispatch();
+    const [data, setData] = useState(null)
+    const [error,setError]=useState(null);
+    const [loading,setLoading]=useState(null);
 
     const fetchData =  async(url,params) => {
         try{
-            const response = await axios.get(BASE_URL + url,{
+            const {data} = await axios.get(BASE_URL + url,{
                 headers,
                 params
             });
-            dispatch(getApiConfigurations(response.data));
+            setData(data);
+            setLoading(false);
+         
         }catch(er) {
             setError(er);
+            setLoading(false);
         }
         
     } ;
 
     useEffect(() => {
+        setLoading('loading...')
         fetchData(url,params);
     },[])
 
-  return [error];
+  return {data,error,loading};
 }
 
 export default useFetch
