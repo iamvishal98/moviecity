@@ -5,22 +5,22 @@ import SwitchButton from '../../../components/switchButton/SwitchButton';
 import useFetch from '../../../utils/useFetch';
 
 
-const Trending = () => {
-    const [timeWindow,setTimeWindow] = useState("day");
+const Popular = () => {
+    const [type,setType] = useState("movie");
     const handleSwitch = (window) => {
-        setTimeWindow(window)
+        setType(window)
     };
-    const {data,loading} = useFetch(`/trending/all/${timeWindow}`);
+    const {data,loading} = useFetch(`/${type}/popular`);
 
   return (
     <div className='carouselSection'>
         <ContentWrapper>
-            <span className="carousalTitle">Trending</span>
-            <SwitchButton data={["day","week"]} handleSwitch={handleSwitch} />
+            <span className="carousalTitle">Whats Popular</span>
+            <SwitchButton data={["movie","tv"]} handleSwitch={handleSwitch}/>
         </ContentWrapper>
-        <Carousel data={data?.results} loading={loading} endPoint={timeWindow}/>
+        <Carousel data={data?.results} loading={loading} endPoint={type} />
     </div>
   )
 }
 
-export default Trending
+export default Popular

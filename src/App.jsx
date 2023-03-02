@@ -9,22 +9,32 @@ import Details from './pages/details/Details';
 import Explore from './pages/explore/Explore';
 import Search from './pages/search/Search';
 import Error from './pages/error/Error';
-import { getApiConfigurations } from './store/slicer/HomeSlice';
+import { getApiConfigurations,getGenres } from './store/slicer/HomeSlice';
+import { fetchDataFromApi, fetchGenre } from './utils/api';
 
 
 function App() {
-  const {data} = useFetch('/configuration');
+  //const {data} = useFetch('/configuration');
   const dispatch = useDispatch();
 
+
   useEffect(() => {
+    fetchDataFromApi('/configuration').then((data) => {
     const url = {
       backdrop: data?.images.secure_base_url + "original",
       poster: data?.images.secure_base_url + "original",
       profile: data?.images.secure_base_url + "original",
     };
     dispatch(getApiConfigurations(url));
+    }
+    ).catch((err) => {console.log(err)});
 
-  },[data]);
+
+    fetchGenre().then((response) => {
+      dispatch(getGenres(response))
+    }).catch((err) => {console.log(err)});
+
+  },[]);
   
 
   return (

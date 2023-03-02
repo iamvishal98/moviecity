@@ -26,7 +26,7 @@ const useFetch = (url,params) => {
     useEffect(() => {
         setLoading('loading...')
         fetchData(url,params);
-    },[])
+    },[url]);
 
   return {data,error,loading};
 }

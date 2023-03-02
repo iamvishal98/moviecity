@@ -2,6 +2,8 @@ import React from 'react';
 import './home.scss';
 import Herobanner from '../../components/banner/Herobanner';
 import Trending from './trending/Trending';
+import Popular from './popular/Popular';
+import TopRated from './toprated/TopRated';
 
 
 const Home = () => {
@@ -9,7 +11,8 @@ const Home = () => {
     <div className='home_conatiner'>
       <Herobanner />
       <Trending />
-      <div style={{height:'150vh'}}></div>
+      <Popular />
+      <TopRated />
     </div>
   )
 }
