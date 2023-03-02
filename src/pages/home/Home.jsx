@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <div className='home_conatiner'>
       <Herobanner />
+      <div style={{height:'150vh'}}></div>
     </div>
   )
 }
