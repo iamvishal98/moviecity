@@ -21,6 +21,13 @@ const Herobanner = () => {
         }
     };
 
+    const serachQueryButtonHandler = () => {
+        if(query.length >0){
+            navigate(`/search/${query}`)
+        }
+
+    }
+
     useEffect(() => {
         const bgImg = url.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
         setBackground(bgImg);
@@ -46,7 +53,7 @@ const Herobanner = () => {
                         onChange={(e) => setQuery(e.target.value)}
                         onKeyUp={searchQueryHandler}
                     />
-                    <button>search</button>
+                    <button onClick={serachQueryButtonHandler}>search</button>
                 </div>
             </div>
         </ContentWrapper>
