@@ -38,6 +38,7 @@ function App() {
           <Route path='/search/:query' element={<Search />} />
           <Route path='*' element={<Error />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
   )
