@@ -53,6 +53,18 @@ const Carousel = ({data,loading,endPoint}) => {
         }
     };
 
+    const skItem =() => {
+        return (
+            <div className="skeletonItem">
+                <div className="posterBlock skeleton"></div>
+                <div className="textBlock">
+                    <div className="title skeleton"></div>
+                    <div className="date skeleton"></div>
+                </div>
+            </div>
+        )
+    }
+
 
   return (
     <div className="carousel">
@@ -94,7 +106,13 @@ const Carousel = ({data,loading,endPoint}) => {
                 </div>
             
             : 
-            <span>Loading....</span>
+            <div className="loadingSkeleton">
+                {skItem()}
+                {skItem()}
+                {skItem()}
+                {skItem()}
+                {skItem()}
+            </div>
 
             }
         </ContentWrapper>
