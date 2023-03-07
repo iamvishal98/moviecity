@@ -12,7 +12,7 @@ import Image from "../lazyload/Image";
 import PosterFallback from "../../assets/no-poster.png";
 import Ratings from "../ratings/Ratings";
 
-const Carousel = ({data,loading,endPoint}) => {
+const Carousel = ({data,loading,endPoint,title}) => {
 
     const carouselRef = useRef();
     const {url} = useSelector(state => state.home);
@@ -77,6 +77,7 @@ const Carousel = ({data,loading,endPoint}) => {
                 className="arrowRight arrow"
                 onClick={() => scrollToRight()}
             />
+            {title && <div className="carouselTitle">{title}</div>}
             {!loading ? 
                 <div className="carouselItems" ref={carouselRef} >
                     {data?.map((item) => {
