@@ -9,7 +9,6 @@ import avatar from "../../../assets/avatar.png";
 
 const Cast = ({ data, loading }) => {
     const { url } = useSelector((state) => state.home);
-
     const skeleton = () => {
         return (
             <div className="skItem">
@@ -22,7 +21,7 @@ const Cast = ({ data, loading }) => {
     return (
         <div className="castSection">
             <ContentWrapper>
-                <div className="sectionHeading">Top Cast</div>
+                {data?.length >0 ? <div className="sectionHeading">Top Cast</div> : ''}
                 {!loading ? (
                     <div className="listItems">
                         {data?.map((item) => {

@@ -11,6 +11,7 @@ import ContentWrapper from "../contentwrapper/ContentWrapper";
 import Image from "../lazyload/Image";
 import PosterFallback from "../../assets/no-poster.png";
 import Ratings from "../ratings/Ratings";
+import CarouselSkeleton from "./carouselSkeleton/CarouselSkeleton";
 
 const Carousel = ({data,loading,endPoint,title}) => {
 
@@ -53,19 +54,6 @@ const Carousel = ({data,loading,endPoint,title}) => {
         }
     };
 
-    const skItem =() => {
-        return (
-            <div className="skeletonItem">
-                <div className="posterBlock skeleton"></div>
-                <div className="textBlock">
-                    <div className="title skeleton"></div>
-                    <div className="date skeleton"></div>
-                </div>
-            </div>
-        )
-    }
-
-
   return (
     <div className="carousel">
         <ContentWrapper>
@@ -77,7 +65,7 @@ const Carousel = ({data,loading,endPoint,title}) => {
                 className="arrowRight arrow"
                 onClick={() => scrollToRight()}
             />
-            {title && <div className="carouselTitle">{title}</div>}
+            {data?.length>0 && <div className="carouselTitle">{title}</div>}
             {!loading ? 
                 <div className="carouselItems" ref={carouselRef} >
                     {data?.map((item) => {
@@ -108,13 +96,11 @@ const Carousel = ({data,loading,endPoint,title}) => {
             
             : 
             <div className="loadingSkeleton">
-                {skItem()}
-                {skItem()}
-                {skItem()}
-                {skItem()}
-                {skItem()}
+                <CarouselSkeleton />
+                <CarouselSkeleton />
+                <CarouselSkeleton />
+                <CarouselSkeleton />
             </div>
-
             }
         </ContentWrapper>
     </div>

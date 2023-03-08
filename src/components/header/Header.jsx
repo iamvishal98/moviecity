@@ -1,13 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+import './header.scss';
+import ContentWrapper from '../contentwrapper/ContentWrapper';
+import logo from '../../assets/download.svg';
+import clickOutside from '../../utils/helper/clickOutside';
+
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
 import { HiOutlineSearch } from "react-icons/hi";
 
-import ContentWrapper from '../contentwrapper/ContentWrapper';
-import logo from '../../assets/download.svg';
-import './header.scss';
-import clickOutside from '../../utils/helper/clickOutside';
+
 
 const Header = () => {
 
@@ -17,7 +20,7 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState("");
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
-  const location = useLocation(); // need to work
+  //const location = useLocation();  need to work
   const menuRef = useRef(null);
   const exceptioMenuRef = useRef(null);
   const searchref = useRef(null);
@@ -36,13 +39,6 @@ const Header = () => {
       }
       setLastScrollY(window.scrollY);
   };
-
-  useEffect(()=> {
-    window.addEventListener("scroll",controlNavbar)
-    return () => {window.removeEventListener("scroll",controlNavbar)}
-  },[lastScrollY]);
-
-
 
   const handleOpenMobileMenu = () => {
     setMobileMenu(!mobileMenu);
@@ -69,6 +65,10 @@ const Header = () => {
     }
   };
 
+  useEffect(()=> {
+    window.addEventListener("scroll",controlNavbar)
+    return () => {window.removeEventListener("scroll",controlNavbar)}
+  },[lastScrollY]);
   
   clickOutside(menuRef,() => {setMobileMenu(false)},exceptioMenuRef);
   clickOutside(searchref,() => {setShowSearch(false)},exceptioSearchRef);

@@ -9,18 +9,9 @@ import useFetch from "../../utils/useFetch";
 import { fetchDataFromApi } from "../../utils/api";
 import ContentWrapper from "../../components/contentwrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
+import { sortbyData } from "../../utils/helper/sortByData";
 
 let filters = {};
-
-const sortbyData = [
-    { value: "popularity.desc", label: "Popularity Descending" },
-    { value: "popularity.asc", label: "Popularity Ascending" },
-    { value: "vote_average.desc", label: "Rating Descending" },
-    { value: "vote_average.asc", label: "Rating Ascending" },
-    {value: "primary_release_date.desc",label: "Release Date Descending"},
-    { value: "primary_release_date.asc", label: "Release Date Ascending" },
-    { value: "original_title.asc", label: "Title (A-Z)" },
-];
 
 const Explore = () => {
     const [data, setData] = useState(null);
@@ -29,9 +20,10 @@ const Explore = () => {
     const [genre, setGenre] = useState(null);
     const [sortby, setSortby] = useState(null);
     const { mediaType } = useParams();
-    console.log(mediaType)
+    //console.log(mediaType)
 
     const { data: genresData } = useFetch(`/genre/${mediaType}/list`);
+    //console.log(genresData);
 
     const fetchInitialData = () => {
         setLoading(true);

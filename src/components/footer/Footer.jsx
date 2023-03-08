@@ -1,13 +1,16 @@
 import React from 'react';
+
+import './footer.scss';
+import ContentWrapper from '../contentwrapper/ContentWrapper';
+
 import {
   FaFacebookF,
   FaInstagram,
   FaTwitter,
   FaLinkedin,
 } from "react-icons/fa";
-import ContentWrapper from '../contentwrapper/ContentWrapper';
 
-import './footer.scss';
+
 
 const Footer = () => {
   return (

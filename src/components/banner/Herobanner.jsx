@@ -6,27 +6,13 @@ import './herobanner.scss';
 
 import Image from '../lazyload/Image';
 import ContentWrapper from '../contentwrapper/ContentWrapper';
+import BannerSkeleton from './bannerSkeleton/BannerSkeleton';
 
 const Herobanner = () => {
 
     const [background,setBackground] =useState('');
-    const [query , setQuery] = useState('');
-    const navigate = useNavigate();
     const {data,loading} = useFetch('/movie/upcoming');
     const {url} = useSelector(state => state.home);
-
-    const searchQueryHandler = (event) => {
-        if(event.key === "Enter" && query.length >0){
-            navigate(`/search/${query}`)
-        }
-    };
-
-    const serachQueryButtonHandler = () => {
-        if(query.length >0){
-            navigate(`/search/${query}`)
-        }
-
-    }
 
     useEffect(() => {
         const bgImg = url.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
@@ -36,27 +22,27 @@ const Herobanner = () => {
 
   return (
     <div className='banner_container'>
-       {!loading && <div className="backdrop_image">
-            <Image src={background} />
-        </div>}
-
-        <div className="opacity_layer"></div>
-
-        <ContentWrapper>
-            <div className="content">
-                <span className="title">Welcome.</span>
-                <span className='subtitle'>Millions of movies, TV shows to discover on your fingertips.</span>
-                {/* <div className="searchInput">
-                    <input 
-                        type='text' 
-                        placeholder='search for movie or tv show' 
-                        onChange={(e) => setQuery(e.target.value)}
-                        onKeyUp={searchQueryHandler}
-                    />
-                    <button onClick={serachQueryButtonHandler}>search</button>
-                </div> */}
+       {!loading ? 
+        (
+            <>
+            <div className="backdrop_image">
+                <Image src={background} />
             </div>
-        </ContentWrapper>
+            <div className="opacity_layer"></div>
+            <ContentWrapper>
+                <div className="content">
+                    <span className="title">Welcome.</span>
+                    <span className='subtitle'>Millions of movies, TV shows to discover on your fingertips.</span>
+                </div>
+            </ContentWrapper>
+            </>
+        ) 
+            : 
+        (
+            <BannerSkeleton />
+
+        )
+        }
     </div>
   )
 }
