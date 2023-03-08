@@ -10,6 +10,7 @@ import dayjs from 'dayjs';
 import Ratings from '../../../components/ratings/Ratings';
 import {AiOutlinePlayCircle} from 'react-icons/ai';
 import Popup from '../../../components/popup/Popup';
+import DetailsBannerSkeleton from './detailsbannerskeleton/DetailsBannerSkeleton';
 
 const DetailsBanner = ({video,crew}) => {
 
@@ -149,18 +150,9 @@ const DetailsBanner = ({video,crew}) => {
                     <Popup show={show} setShow={setShow} videoId={videoId} setVideoId={setVideoId} />
                 </>
             ) : (
-                <div className="detailsBannerSkeleton">
+                <div className="detailsBanner">
                     <ContentWrapper>
-                        <div className="left skeleton"></div>
-                        <div className="right">
-                            <div className="row skeleton"></div>
-                            <div className="row skeleton"></div>
-                            <div className="row skeleton"></div>
-                            <div className="row skeleton"></div>
-                            <div className="row skeleton"></div>
-                            <div className="row skeleton"></div>
-                            <div className="row skeleton"></div>
-                        </div>
+                        <DetailsBannerSkeleton />
                     </ContentWrapper>
                 </div>
             )}

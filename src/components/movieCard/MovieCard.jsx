@@ -23,12 +23,6 @@ const MovieCard = ({ data, fromSearch, mediaType }) => {
         >
             <div className="posterBlock">
                 <Image className="posterImg" src={posterUrl} />
-                {/* {!fromSearch && (
-                    <>
-                        <Ratings rating={data.vote_average.toFixed(1)} />
-                 
-                    </>
-                )} */}
             </div>
             <div className="textBlock">
                 <span className="title">{data.title || data.name}</span>

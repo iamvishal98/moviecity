@@ -6,6 +6,7 @@ import "./cast.scss";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import Image from "../../../components/lazyload/Image";
 import avatar from "../../../assets/avatar.png";
+import CastSkeleton from "./castSkeleton/CastSkeleton";
 
 const Cast = ({ data, loading }) => {
     const { url } = useSelector((state) => state.home);
@@ -23,12 +24,12 @@ const Cast = ({ data, loading }) => {
             <ContentWrapper>
                 {data?.length >0 ? <div className="sectionHeading">Top Cast</div> : ''}
                 {!loading ? (
-                    <div className="listItems">
+                    <div className="listItems ">
                         {data?.map((item) => {
                             let imgUrl = item?.profile_path ? url.profile+item?.profile_path : avatar
                             return (
                                 <div className="listItem" key={item.id}>
-                                    <div className="profileImg">
+                                    <div className="profileImg ">
                                         <Image src={imgUrl} />
                                     </div>
                                     <div className="name">
@@ -42,13 +43,13 @@ const Cast = ({ data, loading }) => {
                         })}
                     </div>
                 ) : (
-                    <div className="castSkeleton">
-                        {skeleton()}
-                        {skeleton()}
-                        {skeleton()}
-                        {skeleton()}
-                        {skeleton()}
-                        {skeleton()}
+                    <div className="listItems">
+                        <CastSkeleton />
+                        <CastSkeleton />
+                        <CastSkeleton />
+                        <CastSkeleton />
+                        <CastSkeleton />
+                        <CastSkeleton />
                     </div>
                 )}
             </ContentWrapper>

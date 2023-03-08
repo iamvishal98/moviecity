@@ -95,7 +95,7 @@ const Carousel = ({data,loading,endPoint,title}) => {
                 </div>
             
             : 
-            <div className="loadingSkeleton">
+            <div className="carouselItems">
                 <CarouselSkeleton />
                 <CarouselSkeleton />
                 <CarouselSkeleton />

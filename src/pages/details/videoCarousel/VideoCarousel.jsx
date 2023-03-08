@@ -3,25 +3,16 @@ import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
 import Image from '../../../components/lazyload/Image';
 import Popup from '../../../components/popup/Popup';
 import './videocarousel.scss'
+import VideoSkeleton from './VideoSkeleton/VideoSkeleton';
 
 const VideoCarousel = ({data,loading}) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
 
-  const loadingSkeleton = () => {
-      return (
-          <div className="skItem">
-              <div className="thumb skeleton"></div>
-              <div className="row skeleton"></div>
-              <div className="row2 skeleton"></div>
-          </div>
-      );
-  };
-
   return (
       <div className="videosSection">
           <ContentWrapper>
-              {data?.length>0 ? <div className="sectionHeading">Official Videos</div> : ''}
+              {data?.results?.length>0 ? <div className="sectionHeading">Official Videos</div> : ''}
               {!loading ? (
                   <div className="videos">
                       {data?.results?.map((video) =>(
@@ -39,11 +30,11 @@ const VideoCarousel = ({data,loading}) => {
                       ))}
                   </div>
               ) : (
-                  <div className="videoSkeleton">
-                      {loadingSkeleton()}
-                      {loadingSkeleton()}
-                      {loadingSkeleton()}
-                      {loadingSkeleton()}
+                  <div className="videos">
+                    <VideoSkeleton />
+                    <VideoSkeleton />
+                    <VideoSkeleton />
+                    <VideoSkeleton />
                   </div>
               )}
           </ContentWrapper>

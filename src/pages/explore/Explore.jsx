@@ -10,6 +10,7 @@ import { fetchDataFromApi } from "../../utils/api";
 import ContentWrapper from "../../components/contentwrapper/ContentWrapper";
 import MovieCard from "../../components/movieCard/MovieCard";
 import { sortbyData } from "../../utils/helper/sortByData";
+import Spinner from "../../components/spinner/Spinner";
 
 let filters = {};
 
@@ -114,6 +115,7 @@ const Explore = () => {
                         />
                     </div>
                 </div>
+                {loading && <Spinner />}
                 {!loading && (
                     <>
                         {data?.results?.length > 0 ? (
