@@ -7,6 +7,7 @@ import TopRated from './toprated/TopRated';
 
 
 const Home = () => {
+  
   return (
     <div className='home_conatiner'>
       <Herobanner />
