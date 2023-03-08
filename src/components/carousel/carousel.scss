@@ -21,8 +21,10 @@
         cursor: pointer;
         opacity: 0.5;
         display: none;
+       
         &:hover {
-            opacity: 0.8;
+            opacity: 0.7;
+          
         }
         @include md {
             display: block;
@@ -34,6 +36,7 @@
     }
     .arrowRight {
         right: 30px;
+    
     }
 
     .carouselItems {

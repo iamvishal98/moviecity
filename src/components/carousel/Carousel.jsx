@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import './carousel.scss';
 import {
     BsFillArrowLeftCircleFill,
@@ -18,40 +18,61 @@ const Carousel = ({data,loading,endPoint,title}) => {
     const carouselRef = useRef();
     const {url} = useSelector(state => state.home);
     const navigate = useNavigate();
-    const [currentSlide,setCurrentSlide] = useState(1);
+    //const [currentSlide,setCurrentSlide] = useState(1);  
+    //let maxSlides,Slides
 
-    const maxSlides=Math.floor
-            (carouselRef?.current?.offsetWidth/carouselRef?.current?.firstChild?.offsetWidth);
+    // let Slides=Math.floor
+    // (carouselRef?.current?.offsetWidth/carouselRef?.current?.firstChild?.offsetWidth);
+     
+    //console.log(carouselRef)
+
+    //  useEffect(() => {
+    //     Slides=Math.floor
+    //     (carouselRef?.current?.offsetWidth/carouselRef?.current?.firstChild?.offsetWidth);
+    //     maxSlides = data?.length/Slides;
+
+
+    //  },[carouselRef,data,maxSlides])
+
+
 
     const scrollToLeft = () => {
         const target = carouselRef.current;
-        if(currentSlide <=1) 
-        { setCurrentSlide(maxSlides)
-            target.scroll({
-                left:target.scrollLeft + ((target.offsetWidth + 20)*currentSlide),
-            })
-        }
-        else {
-            setCurrentSlide(currentSlide-1)
-            target.scroll({
-                left:target.scrollLeft - (target.offsetWidth + 20),
-            })
-        }
+        target.scroll({
+            left:target.scrollLeft - (target.offsetWidth + 20),
+        })
+
+        // if(currentSlide ===1) 
+        // { setCurrentSlide(maxSlides)
+        //     target.scroll({
+        //         left:target.scrollLeft + ((target.offsetWidth + 20)*currentSlide),
+        //     })
+        // }
+        // else {
+        //     setCurrentSlide(currentSlide-1)
+        //     target.scroll({
+        //         left:target.scrollLeft - (target.offsetWidth + 20),
+        //     })
+        // }
     };
 
     const scrollToRight = () => {
         const target = carouselRef.current;
-        if(currentSlide === maxSlides) {
-            setCurrentSlide(1)
-            target.scroll({
-                left:target.scrollLeft - ((target.offsetWidth + 20)*currentSlide),
-            })
-        }else {
-            setCurrentSlide(currentSlide+1);
-            target.scroll({
-                left:target.scrollLeft + (target.offsetWidth + 20),
-            })
-        }
+        target.scroll({
+            left:target.scrollLeft + (target.offsetWidth + 20),
+        })
+        // if(currentSlide === maxSlides) {
+        //     setCurrentSlide(1)
+        //     target.scroll({
+        //         left:target.scrollLeft - ((target.offsetWidth + 20)*currentSlide),
+        //     })
+        // }else {
+        //     setCurrentSlide(currentSlide+1);
+
+        //     target.scroll({
+        //         left:target.scrollLeft + (target.offsetWidth + 20),
+        //     })
+        // }
     };
 
   return (
@@ -96,6 +117,8 @@ const Carousel = ({data,loading,endPoint,title}) => {
             
             : 
             <div className="carouselItems">
+                <CarouselSkeleton />
+                <CarouselSkeleton />
                 <CarouselSkeleton />
                 <CarouselSkeleton />
                 <CarouselSkeleton />
