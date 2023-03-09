@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ContentWrapper from '../../../components/contentWrapper/ContentWrapper';
+import ContentWrapper from '../../../components/contentwrapper/ContentWrapper';
 import Image from '../../../components/lazyload/Image';
 import Popup from '../../../components/popup/Popup';
 import './videocarousel.scss'
