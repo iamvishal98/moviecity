@@ -74,7 +74,6 @@ const Carousel = ({data,loading,endPoint,title}) => {
         //     })
         // }
     };
-
   return (
     <div className="carousel">
         <ContentWrapper>
@@ -98,7 +97,7 @@ const Carousel = ({data,loading,endPoint,title}) => {
                             >
                                 <div className="posterBlock">
                                     <Image src={posterUrl} />
-                                    <Ratings rating={item.vote_average.toFixed(1)} />
+                                    <Ratings rating={item?.vote_average?.toFixed(1)} />
                                 </div>
                                 <div className="textBlock">
                                     <span className="title">

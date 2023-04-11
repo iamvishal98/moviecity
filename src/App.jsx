@@ -11,6 +11,7 @@ import Search from './pages/search/Search';
 import Error from './pages/error/Error';
 import { getApiConfigurations,getGenres } from './store/slicer/HomeSlice';
 import { fetchDataFromApi, fetchGenre } from './utils/api';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary';
 
 
 function App() {
@@ -40,15 +41,17 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/:mediaType/:id' element={<Details />} />
-          <Route path='/explore/:mediaType' element={<Explore />} />
-          <Route path='/search/:query' element={<Search />} />
-          <Route path='*' element={<Error />} />
-        </Routes>
-        <Footer />
+          <ErrorBoundary>
+          <Header />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/:mediaType/:id' element={<Details />} />
+            <Route path='/explore/:mediaType' element={<Explore />} />
+            <Route path='/search/:query' element={<Search />} />
+            <Route path='*' element={<Error />} />
+          </Routes>
+          <Footer />
+        </ErrorBoundary>
       </BrowserRouter>
     </>
   )

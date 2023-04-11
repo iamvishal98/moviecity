@@ -9,13 +9,15 @@ const Similar = ({ mediaType, id }) => {
 
     const title = mediaType === "tv" ? "Similar TV Shows" : "Similar Movies";
 
+    console.log('similar',mediaType)
+
     return (
         <>
         <Carousel
             title={title}
             data={data?.results}
             loading={loading}
-            endpoint={mediaType}
+            endPoint={mediaType}
         />
         </>
     );

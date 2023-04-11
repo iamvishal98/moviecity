@@ -5,10 +5,10 @@ import Popup from '../../../components/popup/Popup';
 import './videocarousel.scss'
 import VideoSkeleton from './VideoSkeleton/VideoSkeleton';
 
-const VideoCarousel = ({data,loading}) => {
+const VideoCarousel = ({data,loading,error}) => {
   const [show, setShow] = useState(false);
   const [videoId, setVideoId] = useState(null);
-
+  
   return (
       <div className="videosSection">
           <ContentWrapper>
